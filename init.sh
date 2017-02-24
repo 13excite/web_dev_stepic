@@ -16,10 +16,12 @@ sudo /etc/init.d/gunicorn restart
 # MYSQL
 sudo service mysql restart
 
-# sudo mysql -uroot -e "CREATE DATABASE qa CHARACTER SET utf8 COLLATE utf8_general_ci;"
-# sudo mysql -uroot -e "GRANT ALL PRIVILEGES ON qa.* TO 'django'@'localhost' IDENTIFIED BY '123456';"
+sudo mysql -uroot -e "CREATE DATABASE qa CHARACTER SET utf8 COLLATE utf8_general_ci;"
+sudo mysql -uroot -e "GRANT ALL PRIVILEGES ON qa.* TO 'django'@'localhost' IDENTIFIED BY '';"
 
-mysql -uroot -e "CREATE DATABASE qa;"
-mysql -uroot -e "CREATE USER 'django@localhost' IDENTIFIED BY '123456';"
-mysql -uroot -e "GRANT ALL ON qa.* TO 'django@localhost';"
-mysql -uroot -e "FLUSH PRIVILEGES;"
+
+# NEED EMPTY USER PASS
+# sudo mysql -uroot -e "CREATE DATABASE qa;"
+# sudo mysql -uroot -e "CREATE USER 'django@localhost' IDENTIFIED BY '';"
+# sudo mysql -uroot -e "GRANT ALL ON qa.* TO 'django@localhost';"
+# sudo mysql -uroot -e "FLUSH PRIVILEGES;"
