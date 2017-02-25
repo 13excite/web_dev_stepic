@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 class Question(models.Model):
     title = models.CharField(max_length=255)
@@ -7,8 +8,7 @@ class Question(models.Model):
     added_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(255)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    likes = models.TextField()
-
+    likes = models.ManyToManyField(User)
 
 class Answer(models.Model):
     text = models.TextField()
