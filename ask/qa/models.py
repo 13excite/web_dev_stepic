@@ -33,3 +33,9 @@ class Answer(models.Model):
 
     def __unicode__(self):
         return 'Answer by {}'.format(self.author)
+
+class QuestionManager(models.Manager):
+    def new(self):
+        return self.order_by('-id')
+    def popular(self):
+        return self.order_by('-rating')
