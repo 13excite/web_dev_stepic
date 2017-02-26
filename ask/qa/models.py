@@ -3,7 +3,14 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 
+class QuestionManager(models.Manager):
+    def new(self):
+        return self.order_by('-id')
+    def popular(self):
+        return self.order_by('-rating')
+
 class Question(models.Model):
+    objects = QuestionManager()
     title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)
@@ -33,9 +40,3 @@ class Answer(models.Model):
 
     def __unicode__(self):
         return 'Answer by {}'.format(self.author)
-
-class QuestionManager(models.Manager):
-    def new(self):
-        return self.order_by('-id')
-    def popular(self):
-        return self.order_by('-rating')
